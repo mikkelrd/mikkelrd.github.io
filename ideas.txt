@@ -1,6 +1,8 @@
+directives
 menu bar fixed to top
 return to top button
-game users
+game users (persistent scores)
+food persistent
 
 tag game
 food realtime

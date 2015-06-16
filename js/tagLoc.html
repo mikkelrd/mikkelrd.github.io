@@ -1,7 +1,7 @@
 <div ng-controller="ctrlLoc">
   <ui-gmap-google-map center='map.center' zoom='map.zoom'></ui-gmap-google-map>
   <div class="row" ng-repeat="img in imgs">
-    <img ng-src="{{img.images.low_resolution.url}}" color-thief color-thief-dominant="img.dominant" crossorigin="anonymous" height="100" width="100">
+    <img ng-src="{{img.images.low_resolution.url}}" crossorigin="anonymous" height="100" width="100">
 <!--     <div class="row colorBox" ng-style="{'background-color': 'rgb('+img.dominant[0]+', '+img.dominant[1]+', '+img.dominant[2]+')'}"></div> -->
   </div>
 </div>

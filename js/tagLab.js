@@ -1,4 +1,4 @@
-angular.module('tagLab', ['ngRoute','ngColorThief', 'uiGmapgoogle-maps'])
+angular.module('tagLab', ['ngRoute', 'uiGmapgoogle-maps'])
 
 .config(function($routeProvider){
   $routeProvider
@@ -14,9 +14,6 @@ angular.module('tagLab', ['ngRoute','ngColorThief', 'uiGmapgoogle-maps'])
   .when('/loc/', {
     templateUrl: 'js/tagLoc.html'
   })
-  .when('/clock/', {
-    templateUrl: 'js/tagClock.html'
-  })
   .otherwise({
     redirectTo: '/'
   })
@@ -31,13 +28,19 @@ angular.module('tagLab', ['ngRoute','ngColorThief', 'uiGmapgoogle-maps'])
 })
 
 .controller('ctrlGame', function($scope, servGame){
-  $scope.imgs = [];
-  $scope.test = function (tag) {
-    servGame.getRecent(tag).then(function(res){
-      $scope.imgs = res;
+  $scope.plyr1 = {};
+  $scope.plyr2 = {};
+  $scope.getNums = function(guess1, guess2){
+    servGame.getNums(guess1).then(function(result1){
+      servGame.getNums(guess2).then(function(result2){
+        $scope.plyr1.result = result1;
+        $scope.plyr2.result = result2;
+        $scope.winner = $scope.plyr1.result > $scope.plyr2.result ? '1' : '2';
+        servGame.getRecent(guess1).then(function(res){$scope.plyr1.imgs = res});
+        servGame.getRecent(guess2).then(function(res){$scope.plyr2.imgs = res});
+      });
     });
   };
-  $scope.test('icecream');
 })
 
 .service('servGame', function($q, $http){
@@ -56,29 +59,67 @@ angular.module('tagLab', ['ngRoute','ngColorThief', 'uiGmapgoogle-maps'])
     });
     return def.promise;
   }
-})
-
-.controller('ctrlFood', function($scope, servFood){
-  $scope.tweets = [];
-  $scope.test = function (tag) {
-    servFood.getRecent(tag).then(function(res){
-      $scope.imgs = res;
-    });
-  };
-  $scope.test('icecream');
-})
-
-.service('servFood', function($q, $http){
-  this.getRecent = function(tag){
+  this.getNums = function(tag){
     var def = $q.defer();
-    var endPoint = 'https://stream.twitter.com/1.1/statuses/filter.json?&track=' + tag;
+    var endPoint = 'https://api.instagram.com/v1/tags/' + tag + 
+                   '?client_id=986eb7577449427da9961ae44427cf57&callback=JSON_CALLBACK';
     $http({
       method: 'JSONP',
       url: endPoint
     })
     .then(function(res){
-      var parsed = res;
-      console.log(parsed);
+      var parsed = res.data.data.media_count;
+      def.resolve(parsed);
+    });
+    return def.promise;
+  }
+})
+
+.controller('ctrlFood', function($scope, servFood){
+  $scope.foods = [
+    {food: 'pizza', count: 0},
+    {food: 'icecream', count: 0},
+    {food: 'waffles', count: 0},
+    {food: 'bacon', count: 0},
+    {food: 'hotdog', count: 0},
+    {food: 'chocolate', count: 0},
+    {food: 'donuts', count: 0}
+  ];
+  $scope.getNums = function(){
+    $scope.foods.forEach(function(food){
+      servFood.getNums(food.food).then(function(res){
+        food.count = res;
+      });
+    });
+  };
+  setInterval(function(){$scope.getNums()}, 2000);
+})
+
+.service('servFood', function($q, $http){
+//   this.getRecent = function(tag){
+//     var def = $q.defer();
+//     var endPoint = 'https://stream.twitter.com/1.1/statuses/filter.json?&track=' + tag;
+//     $http({
+//       method: 'JSONP',
+//       url: endPoint
+//     })
+//     .then(function(res){
+//       var parsed = res;
+//       console.log(parsed);
+//       def.resolve(parsed);
+//     });
+//     return def.promise;
+//   }
+  this.getNums = function(tag){
+    var def = $q.defer();
+    var endPoint = 'https://api.instagram.com/v1/tags/' + tag + 
+                   '?client_id=986eb7577449427da9961ae44427cf57&callback=JSON_CALLBACK';
+    $http({
+      method: 'JSONP',
+      url: endPoint
+    })
+    .then(function(res){
+      var parsed = res.data.data.media_count;
       def.resolve(parsed);
     });
     return def.promise;

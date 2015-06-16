@@ -1,12 +1,17 @@
-<div>
-  <div>Player 1</div>
-  <div>Result</div>
-  <div>Player 2</div>
-</div>
-
 <div ng-controller="ctrlGame">
-  <div ng-repeat="img in imgs">
-    <div class="row"><img ng-src="{{img.images.low_resolution.url}}" color-thief color-thief-dominant="img.dominant" crossorigin="anonymous" height="100" width="100"></div>
-    <div class="row colorBox" ng-style="{'background-color': 'rgb('+img.dominant[0]+', '+img.dominant[1]+', '+img.dominant[2]+')'}"></div>
+  <div>
+    <div>Player 1 Guess:#{{plyr1.guess}} Result:{{plyr1.result}} </div>
+    <input ng-model="plyr1.guess" type="text" placeholder="Enter guess...">
+    <div>Player 2 Guess:#{{plyr2.guess}} Result:{{plyr2.result}}</div>
+    <input ng-model="plyr2.guess" type="text" placeholder="Enter guess...">
+    <br>
+    <button ng-click="getNums(plyr1.guess, plyr2.guess)">GO!</button>
+    <div>Player {{winner}} Wins!</div>
+  </div>
+  <div class="row" ng-repeat="img in plyr1.imgs">
+    <div class="row"><img ng-src="{{img.images.low_resolution.url}}" crossorigin="anonymous" height="100" width="100"></div>
+  </div>
+  <div class="row" ng-repeat="img in plyr2.imgs">
+    <div class="row"><img ng-src="{{img.images.low_resolution.url}}" crossorigin="anonymous" height="100" width="100"></div>
   </div>
 </div>
