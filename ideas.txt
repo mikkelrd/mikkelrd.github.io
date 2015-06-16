@@ -1,0 +1,48 @@
+menu bar fixed to top
+return to top button
+game users
+
+tag game
+food realtime
+google search trend for common hashtags
+location trend
+
+tbt
+happy
+sad
+mad
+girl
+boy
+fun
+summer
+winter
+spring
+fall / autumn
+food
+nature
+beach
+christmas
+thanksgiving
+friday
+saturday
+sunday
+monday
+breakfast
+lunch
+
+var canvas = document.getElementById("mycanvas");
+var img    = canvas.toDataURL("image/png");
+with the value in IMG you can write it out as a new Image like so:
+document.write('<img src="'+img+'"/>');
+
+https://developer.mozilla.org/en-US/docs/Web/API/CanvasRenderingContext2D#getImageData%28%29
+https://developer.mozilla.org/en-US/docs/Web/API/Document/getElementsByClassName
+http://www.programmableweb.com/category/photos/apis?category=20162&order=field_popularity&deadpool=1&limit=10
+http://www.programmableweb.com/api/ascii-art
+http://ascii.gallery/api#
+http://catalog.data.gov/dataset?q=-aapi+api+OR++res_format%3Aapi#topic=developers_navigation
+
+var endPoint = 'http://api.wolframalpha.com/v2/query?input=' +
+               'ethan' +
+               '&appid=R6WQ34-7Q2U8VQT26';
+given name data compared to google search trend
