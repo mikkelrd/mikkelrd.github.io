@@ -1,0 +1,13 @@
+body {
+  height: 11in;
+  width: 100vh;
+  margin: 0 auto;
+  background: #aaa;
+}
+
+#page {
+    height: 11in;
+    width: 8.5in;
+    margin: auto;
+    background: #fff;
+}
