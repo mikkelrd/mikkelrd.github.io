@@ -1,8 +1,43 @@
 <!DOCTYPE html>
-<html>
+<html ng-app="mrd">
   <head>
+    <title>Mikkel R. Davis | web developer</title>
+    <link rel="stylesheet" type="text/css" href="http://fonts.googleapis.com/css?family=Sura" >
+    <link rel="stylesheet" type="text/css" href="http://fonts.googleapis.com/css?family=Noto+Sans:400,400italic" >
+    <link rel="stylesheet" href="https://maxcdn.bootstrapcdn.com/font-awesome/4.4.0/css/font-awesome.min.css" >
+    <link rel="stylesheet" href="https://cdnjs.cloudflare.com/ajax/libs/animate.css/3.4.0/animate.min.css" >
+    <link rel="stylesheet" href="main.css" >
   </head>
   <body>
-    TEST TEST TEST
+    <div id="main">
+      <div id="title">
+        <div id="name">MIKKEL&nbsp;&nbsp;DAVIS</div>
+        <div id="subtitle">web developer</div>
+      </div>
+      <br>
+      <div id="fade-container" class="animated fadeIn">
+        <div id="links">
+          <a href="http://www.github.com/mikkelrd"><i class="fa fa-github-alt"></i></a>
+          <a href="http://www.linkedin.com/in/mikkelrd"><i class="fa fa-linkedin"></i></a>
+          <a href="http://www.twitter.com/mikkelrd"><i class="fa fa-twitter"></i></a>
+        </div>
+        <br>
+        <a href="MRDavisResume.pdf">RESUME</a>
+        <br>
+        <div id="projects">
+          <span style="font-style: italic">RECENT PROJECTS:</span>
+          <br>
+          <br>
+          <a href="http://www.github.com/mikkelrd/recur">Recur</a>
+          <br>
+          <a href="">DevMtn Resources</a>
+        </div>
+      </div>
+    </div>
+
+    <!-- <div class="box" scroll-box></div> -->
+
+    <script src="https://cdnjs.cloudflare.com/ajax/libs/angular.js/1.4.4/angular.js" ></script>
+    <script src="ngApp.js" ></script>
   </body>
 </html>

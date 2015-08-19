@@ -1,6 +1,6 @@
 body {
   height: 11in;
-  width: 100vh;
+  width: 100vw;
   margin: 0 auto;
   background: #aaa;
 }
@@ -9,5 +9,6 @@ body {
     height: 11in;
     width: 8.5in;
     margin: auto;
+    padding: 1in;
     background: #fff;
 }
