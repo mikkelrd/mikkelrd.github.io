@@ -1,0 +1,55 @@
+*, *:before, *:after {
+  box-sizing: border-box; }
+
+html {
+  font-size: 62.5%; }
+
+body {
+  font-family: 'Enriqueta', serif;
+  font-size: 1.5rem;
+  color: #333; }
+
+h1, h2, h3, h4, h5, h6 {
+  font-family: 'Archivo', sans-serif; }
+
+:link, :visited {
+  text-decoration: none;
+  background-image: repeating-linear-gradient(to right, currentColor, currentColor 2px, transparent 2px, transparent 4px);
+  background-repeat: space no-repeat;
+  background-position: 0 1.9rem;
+  background-size: 0.5rem;
+  color: inherit; }
+
+:link:focus, :visited:focus {
+  outline: none;
+  background-color: #ddd; }
+
+:link:hover, :visited:hover {
+  color: #777; }
+
+:link:active, :visited:active {
+  color: #bbb; }
+
+.Main {
+  max-width: 50rem;
+  margin: 0 auto; }
+
+.Contact {
+  margin: 0 0 3rem; }
+  .Contact__header {
+    display: flex;
+    justify-content: space-between;
+    margin: 0 0 1.5rem; }
+  .Contact__name {
+    margin: 0;
+    font-size: 5rem;
+    line-height: 5rem;
+    white-space: pre-line; }
+  .Contact__picture {
+    height: 15rem;
+    border-radius: 0.4rem; }
+
+.About {
+  display: flex; }
+  .About__section {
+    flex: 1; }
